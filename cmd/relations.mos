@@ -1,0 +1,4 @@
+lt GNBCUUPFunction|nrcellcu|nrcelldu|NRCellRelation
+hgetc GNBCUUPFunction gNBId$
+hgetcm ^nrcell.u cellLocalId
+hgetc NRCellRelation nRFreqRelationRef

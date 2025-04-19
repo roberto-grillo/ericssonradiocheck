@@ -1,0 +1,19 @@
+lt all
+cvls
+uv prompt=$nodename_OTHER_VARIABLES_START
+pv $rats
+pv $currentSW
+pv $currentUP
+uv prompt=$nodename
+pv $mibprefix
+uv prompt=$nodename_OTHER_VARIABLES_END
+uv prompt=$nodename_OTHER_CHECKS_START
+get ^UpgradePackage=
+get ^FieldReplaceableUnit=
+get ^RadioEquipmentClockReference=
+get ^NodeGroupSyncMember=
+get ^SectorCarrier=
+get ^NRSectorCarrier=
+get ^VlanPort=
+uv prompt=$nodename_OTHER_CHECKS_END
+uv prompt=$nodename

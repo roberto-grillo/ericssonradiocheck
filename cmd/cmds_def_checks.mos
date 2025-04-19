@@ -1,0 +1,39 @@
+uv prompt=$nodename_LOADING_START
+time lt all
+uv export_username
+#pv $momparts
+#pv $nr_of_vars
+uv prompt=$nodename_LOADING_END
+
+uv prompt=$nodename_HEALTH_CHECK_START
+hget ^NodeBLocalCell=|^Trx=|^EUtranCell.DD=|^NRCellDU=|^NbIotCell= operationalState|administrativeState
+hget ^NRCellCU= cellState|serviceState
+hget ^CellSleepFunction= sleepMode|sleepState
+altc
+hget UpgradePackage ^state$
+cvls
+pv currentup
+scg
+hgetc RadioEquipmentClockReference syncRefType|referenceStatus|priority|operQualityLevel|encapsulation
+hgetc AssistingReference
+pv $rats
+pv $momversion
+hget KeyFileInformation=1
+hgetc EmergencyUnlock=1
+hget BrmBackup= creationTime|backupName
+invlc
+hgetc SectorCarrier essScLocalId|essScPairId
+hgetc nrcelldu bandlist
+hgetc ^EUtranCell.DD ^freqBand$
+lst GNBCUCPFunction.*TermPointToENodeB
+lst GNBCUCPFunction.*TermPointToGNodeB
+lst ENodeBFunction=1,.*TermPointToGNB
+lst ENodeBFunction=1.*,TermPointToENB
+
+stzc
+mfcc
+
+#run $scripts/chkHwac.mos
+llog -l 1
+uv prompt=$nodename_HEALTH_CHECK_END
+uv prompt=$nodename

@@ -1,0 +1,6 @@
+lt PlugInUnit
+lt AuxPlugInUnit
+lt FieldReplaceableUnit
+get Equipment=1,FieldReplaceableUnit .
+get Equipment=1,AuxPlugInUnit .
+get Slot=.,PlugInUnit .

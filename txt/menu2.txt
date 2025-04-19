@@ -1,0 +1,59 @@
+
+  +-----------------------------------------------------------------------+ +-----------------------------------||
+  |                                           SINGLE    MERGE     DELTA   | |                                   ||
+  |  REPORT NAME                              REPORT    REPORT    REPORT  | |  MOBatch                          ||
+  +------------------------------------------ -------  --------  ---------| |===================================||
+  | *Excel Report                               x         xm        xd    | |  Change All                  CA   ||
+  |  Main Log - Warning                         50                        | |  BrmFailSafe Clean           BC   ||
+  |  Analyze ChangeAll - Errors                 51                        | |                                   ||
+  |  Analyze ChangeAll - No Change              52(l)                     | |  Default Checks              01   ||
+  |  Analyze ChangeAll - Set                    53(l)                     | |  Custom Checks               02   ||
+  |  Analyze ChangeAll - Deleted                54(l/s)                   | |  Default + Custom Checks     03   ||
+  |  Analyze ChangeAll - Created                55(l/s)                   | |                                   ||
+  |  Analyze ChangeAll - NoChange,Set,Deleted   60                        | |                                   ||
+  |  Analyze ChangeAll - NoChange,Set,Details   60s                       | |  Check Hwac                  HC   ||
+  |  Analyze ChangeAll - Comments Included      r(s)                      | |  DUMP                        KD   ||
+  |  Single Node Log                            10                        | |  Download MOM Files          mom  ||
+  |  Single Node Alarms and Cells               10s      10m              | +===================================||
+  | *FDD/TDD and SleepMode                      11       11m  11md  11d   |
+  |  FDD/TDD and SleepMode [ENABLED]            12                        |
+  |  FDD/TDD and SleepMode [DISABLED]           13                        |
+  |  FDD/TDD and SleepMode [DISABLED/SM]        14                        |
+  | *NRCell CU and DU                           16(E/D)  16m        16d   |
+  | *Cells [Trx,NodeBLocalCell,FDD,TDD,DU]      21       21m        21d   |                                       
+  | *Trx                                        24       24m        24d   |
+  | *NbIot                                      26       26m        26d   |
+  | *NodeBLocalCell                             29       29m        29d   |
+  |  NRCellCU                                   27                        |
+  |  Sleep State                                28                        |
+  |  Alarms [All]                               31                  31d   |
+  | *Alarms [Critical, Major, Minor]            33                  33d   |
+  |  Alarms [Critical, Major, Minor] Add.Text                       35    |
+  | *Alarms. The most present problems                              36    |
+  | *Alarms. The most present MO                                    38    |
+  |  RATS                                       40                        |
+  | *Upgrade Package                            41(c/f)  41m        41d   |
+  | *BrmBackup                                  44                        |
+  |  RN License                                 45                        |
+  |  RN Emergency Unlock                        46                        |
+  |  Licenses                                   48                        |
+  |  RadioEquipmentClockReference               49(D)                     |
+  |  System Constants                           61                        |
+  | *Last Restart                               62                        |
+  |  MOM Version                                63                        |
+  |  TerminationPoint 4G 4G          (timit)    tp44                      |
+  |  TerminationPoint 4G 5G          (timit)    tp45                      |
+  |  TerminationPoint 5G 4G          (timit)    tp54                      |
+  |  TerminationPoint 5G 5G          (timit)    tp55                      |
+  |  STZ LTE print                              stz4                      |
+  |  STZ NR  print                              stz5                      |
+  |  STZ Freq Band html Report                  stz                       |
+  |  MFC print                                  mfc                       |
+  | *Custom Check [custom checks required]      82                        |
+  |  NR Relations [custom checks required]      85                        |
+  +-----------------------------------------------------------------------+
+   * Suggested Checks
+
+      m. This menu    s1. Set one folder    h. Help
+      b. Basic Menu   s2. Set two folders   e. Exit
+      f. View Files   su. Unset folders

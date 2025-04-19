@@ -1,0 +1,25 @@
+uv prompt=$nodename_LOADING_START
+time lt all
+uv export_username
+uv prompt=$nodename_LOADING_END
+
+uv prompt=$nodename_HEALTH_CHECK_START
+hget ^NodeBLocalCell=|^Trx=|^EUtranCell.DD=|^NRCellDU=|^NbIotCell= operationalState|administrativeState
+hget ^NRCellCU= cellState|serviceState
+hget ^CellSleepFunction= sleepMode|sleepState
+altc
+hget UpgradePackage ^state$
+cvls
+pv currentup
+scg
+pv $rats
+pv $momversion
+hget KeyFileInformation=1
+hgetc EmergencyUnlock=1
+hget BrmBackup= creationTime|backupName
+lst GNBCUCPFunction.*TermPointToENodeB
+lst GNBCUCPFunction.*TermPointToGNodeB
+lst ENodeBFunction=1,.*TermPointToGNB
+lst ENodeBFunction=1.*,TermPointToENB
+uv prompt=$nodename_HEALTH_CHECK_END
+uv prompt=$nodename

@@ -1,0 +1,17 @@
+lt all
+cvls
+uv prompt=\$nodename_NETWORK_CHECK_START
+hget UpgradePackage ^state$
+pv $rats
+pv $currentSW"
+pv $currentUP"
+uv prompt=\$nodename_NETWORK_CHECK_END"
+uv prompt=\$nodename"
+pv $mibprefix"
+get FieldReplaceableUnit="
+get RadioEquipmentClockReference="
+get NodeGroupSyncMember="
+get SectorCarrier="
+get NRSectorCarrier="
+get VlanPort=ERAN"
+sdi

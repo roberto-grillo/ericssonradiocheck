@@ -1,0 +1,9 @@
+confbl+
+gsg+
+lt BrmFailsafeBackup
+acc BrM=1,BrmBackupManager=1,BrmFailsafeBackup=1 activate
+wait 5
+acc BrM=1,BrmBackupManager=1,BrmFailsafeBackup=1 deactivate
+2
+confbl-
+gsg-

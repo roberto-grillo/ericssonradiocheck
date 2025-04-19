@@ -1,0 +1,102 @@
+
+You can put your nodes list in the folder lists
+You can put the changeall in the folder changeall
+[OPTIONAL] You can add an additional check commands file in the folder cmd.
+
+- Single Report: it shows the report for a single check
+- Merge  Report: it shows the report containing data of two checks
+- Delta  Report: it shows the report containing the delta of two checks
+
+
+
+s1  - set the activity folder to avoid the request every time you need to print some report
+s2  - set the two activity folders to avoid the request every time you need to print some report
+su  - unset the activity folders
+  
+********************************************** MENU DESCRIPTION *******************************************
+  
+CA  - it runs the change all
+
+01  - it runs the predefined checks
+
+02  - it runs the custom checks.
+      The custom checks file must be included by you in the cmd folder. Don't insert lt all. Load the MOs with lt by specifying them with all the necessary capital letters where needed
+      Example:
+      lt PlugInUnit
+      lt AuxPlugInUnit
+      lt FieldReplaceableUnit
+      get Equipment=1,FieldReplaceableUnit .
+      get Equipment=1,AuxPlugInUnit .
+      get Slot=.,PlugInUnit .
+
+03  - it runs the prefefined checks + your custom checks.
+      The custom checks file must be included by you in the cmd folder. Don't insert lt all. Load the MOs with lt by specifying them with all the necessary capital letters where needed
+      Example:
+      lt PlugInUnit
+      lt AuxPlugInUnit
+      lt FieldReplaceableUnit
+      get Equipment=1,FieldReplaceableUnit .
+      get Equipment=1,AuxPlugInUnit .
+      get Slot=.,PlugInUnit .
+
+mom - it runs amosbatch on the first 100 nodes of the specified list to download the MOM files in the user folder
+
+KD  - it executes the dump of the nodes
+
+HC   - it runs the HWAC script
+x    - it creates the xlsx single report (static report) with the main information
+xm   - it creates the xlsx merge report
+xd   - it creates the xlsx delta report containing all the new problems found without to report the previous problems
+50   - it reports the warning information about the mobatch run
+51   - it reports the Errors found during the change all
+52   - it reports the No Change found during the change all
+53   - it reports the Set MOs found during the change all
+54   - it reports the Deleted MOs found during the change all
+60   - it reports the No Change, Set, Delete on the MOs found during the change all
+40   - it shows the RATS table
+10s  - it reports the cell and alarms status of the single node of the single check
+10m  - it reports the cells and alarms status of the single node of two checks
+10   - it prints the log of the single node
+11   - it prints the Administrative State, the Operational State, the Sleepmode activation of the EUtranCell.DD
+12   - it prints the Administrative State, the Operational State, the Sleepmode activation of the EUtranCell.DD OK
+13   - it prints the Administrative State, the Operational State, the Sleepmode activation of the EUtranCell.DD Not OK
+14   - it prints the Administrative State, the Operational State, the Sleepmode activation of the EUtranCell.DD Not OK due to SleepMode/SleepState Activated
+11m  - it prints the Administrative State, the Operational State, the Sleepmode activation of the EUtranCell.DD of two activities in the same table
+11md - it prints the differences of the Administrative State, the Operational State, the Sleepmode activation of the EUtranCell.DD between two activities
+11d  - it prints the differences of the Administrative State, the Operational State (Operational State Disabled is considered only if the Sleepmode is Deactivated) of the EUtranCell.DD between two activities
+16   - it prints the status of the NR Cell CU and DU
+17   - it prints only the status ENABLED of the NR Cell CU and DU
+18   - it prints only the status DISABLED of the NR Cell CU and DU
+16m  - it prints the status of the NR Cell CU and DU  of two activities
+16d  - it prints the differences of the status of the NR Cell CU and DU  between two activities
+21   - it prints the status of GsmSector, EUtranCellFDD, NRCellDU and NbIotCell
+21d  - it prints the Trx,NodeBLocalCell,EUtranCellFDD,EUtranCellTDD,NRCellDU diff between the second activity and the first one (it removes the lines of the first activity from the ones in the second activity and then remove unlocked;enabled since you don't need to see cells on air that before the activity were not unlocked;enabled)
+24   - it prints the Trx diff between the second activity and the first one (it removes the lines of the first activity from the ones in the second activity and then remove unlocked;enabled since you don't need to see cells on air that before the activity were not unlocked;enabled)
+26   - it prints the NbIot diff between the second activity and the first one (it removes the lines of the first activity from the ones in the second activity and then remove unlocked;enabled since you don't need to see cells on air that before the activity were not unlocked;enabled)
+29   - it prints the NodeBLocalCell diff between the second activity and the first one (it removes the lines of the first activity from the ones in the second activity and then remove unlocked;enabled since you don't need to see cells on air that before the activity were not unlocked;enabled)
+27   - it prints the status of the NRCellCU
+28   - it prints the Sleep State status
+31   - it prints all the alarms
+31d  - it prints the differences of the alarms between two activities. In example: You insert Folder1 and Folder2 and the output is: the alarms included in Folder2 but not included in Folder1
+33   - it prints the Critical, Major, Minor alarms
+33d  - it prints the differences of Critical, Major, Minor alarms between two activities. In example: You insert Folder1 and Folder2 and the output is: the alarms included in Folder2 but not included in Folder1
+35   - it prints the differences of Critical, Major, Minor alarms between two activities. In example: You insert Folder1 and Folder2 and the output is: the alarms included in Folder2 but not included in Folder1
+       (the alarms included in the Folder2 with new id  and included also in the Folder1  will be printed
+36   - it prints the differences of the alarms between two activities and creates a report of the most present problems. In example: You insert Folder1 and Folder2 and the output is: the alarms included in Folder2 but not included in Folder1
+38   - it prints the differences of the alarms between two activities and creates a report of the most present MO. In example: You insert Folder1 and Folder2 and the output is: the alarms included in Folder2 but not included in Folder1
+41   - it prints the installed upgrade package
+41f  - it prints the upgrade packages included in the nodes
+41c  - it prints the number of upgrade packages for every node
+41m  - it prints the installed upgrade package for the Folder1 and Folder2
+41d  - it prints the installed upgrade package for the Folder1 and Folder2 only if the upgrade package is the same
+44   - it prints the last BrmBackup for every node
+46   - it prints RN License Emergency Unlock
+49   - it prints the RadioEquipmentClockReference
+63   - it prints the MOM version
+61   - it prints the system constants
+62   - it prints the last restart for every node
+82   - it prints the custom report. You can select the MO, the attribute, the value. It can be used only after you used the Amosbatch Custom Checks Menu.
+       See the help for that menu for more details
+85   - it create a report of the NR Relation (it must be run after the nr_relation amosbatch script included in the cmd folder
+
+***********************************************************************************************************

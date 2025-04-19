@@ -1,0 +1,20 @@
+lt FieldReplaceableUnit
+lt RadioEquipmentClockReference
+lt BoundaryOrdinaryClock
+lt NodeGroupSyncMember
+lt SyncEthInput
+lt RiLink
+lt TermPointToMme
+lt TermPointToAmf
+lt RetSubUnit
+lt TmaSubUnit
+get Equipment=1,FieldReplaceableUnit .
+get BoundaryOrdinaryClock .
+get RadioEquipmentClockReference .
+get NodeGroupSyncMember .
+get SyncEthInput .
+get Equipment=1,RiLink .
+get TermPointToMme .
+get TermPointToAmf .
+get RetSubUnit .
+get TmaSubUnit .

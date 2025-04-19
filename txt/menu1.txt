@@ -1,0 +1,37 @@
+               
+                  +-------------------------------------------------------------------------+
+                  | MObatch                                                                 |
+                  |-------------------------------------------------------------------------|
+                  | Change All                               |              CA              |
+                  | Default Checks                           |              01              |
+                  +-------------------------------------------------------------------------+
+                                                                                           
+                  +-------------------------------------------------------------------------+
+                  |                                          |  SINGLE  | MERGE   | DELTA   |
+                  | REPORT NAME                              |  REPORT  | REPORT  | REPORT  |
+                  |------------------------------------------------------ ------- - ------ -|
+                  |*Excel Report                             |  x       |   xm    |   xd    |
+                  |                                          |          |         |         |
+                  |*FDD/TDD and SleepMode                    |  11      |   11m   |   11d   |
+                  | FDD/TDD and SleepMode [DISABLED/SM]      |  14      |         |         |
+                  |*NRCell CU and DU                         |  16(E/D) |   16m   |   16d   |
+                  |*Cells [Trx,NodeBLocalCell,FDD,TDD,DU]    |  21      |   21m   |   21d   |
+                  |*Trx                                      |  24      |   24m   |   24d   |
+                  |*NbIot                                    |  26      |   26m   |   26d   |
+                  |*NodeBLocalCell                           |  29      |   29m   |   29d   |
+                  | Alarms [All]                             |  31      |         |   31d   |
+                  |*Alarms [Critical, Major, Minor]          |  33      |         |   33d   |
+                  |*Upgrade Package                          |  41      |   41m   |   41d   |
+                  |*BrmBackup                                |  44      |         |         |
+                  | RadioEquipmentClockReference             |  49      |         |         |
+                  | System Constants                         |  61      |         |         |
+                  |*Last Restart                             |  62      |         |         |
+                  |*Main Log - Warning                       |  50      |         |         |
+                  |*Analyze ChangeAll - Errors               |  51      |         |         |
+                  |*Analyze ChangeAll - NoChange,Set,Deleted |  60      |         |         |
+                  +-------------------------------------------------------------------------+
+                   * Suggested Checks
+                   
+                      m. This menu          s1. Set one folder       h. Help
+                      a. Advanced Menu      s2. Set two folders      e. Exit
+                      f. View Files         su. Unset folders

@@ -1,0 +1,25 @@
+
+<script>
+
+am5.ready(function() {
+
+var grafico2 = am5.Root.new("chartdiv2");
+
+grafico2.setThemes([
+  am5themes_Animated.new(grafico2)
+]);
+
+var chart2 = grafico2.container.children.push(am5percent.PieChart.new(grafico2, {
+  radius: am5.percent(90),
+  innerRadius: am5.percent(50),
+  layout: grafico2.horizontalLayout
+}));
+
+var series2 = chart2.series.push(am5percent.PieSeries.new(grafico2, {
+  name: "Series2",
+  valueField: "Amount",
+  categoryField: "ProblemType"
+}));
+
+
+series2.data.setAll([

@@ -1,0 +1,38 @@
+
+           </ul>
+            <div class="resize-handle" id="resize-handle"></div>
+        </div>
+        <div class="content">
+            <iframe name="content-frame" src="main.html"></iframe>
+        </div>
+    </div>
+
+    <script>
+        // Elementi per il ridimensionamento
+        const sidebar = document.getElementById('sidebar');
+        const resizeHandle = document.getElementById('resize-handle');
+
+        // Funzione per iniziare il ridimensionamento
+        resizeHandle.addEventListener('mousedown', function (e) {
+            e.preventDefault();
+            document.addEventListener('mousemove', resizeSidebar);
+            document.addEventListener('mouseup', stopResize);
+        });
+
+        // Ridimensiona la sidebar in base al movimento del mouse
+        function resizeSidebar(e) {
+            let newWidth = e.clientX;
+            if (newWidth > 200 && newWidth < 500) {  // Limita la larghezza
+                sidebar.style.width = newWidth + 'px';
+            }
+        }
+
+        // Ferma il ridimensionamento
+        function stopResize() {
+            document.removeEventListener('mousemove', resizeSidebar);
+            document.removeEventListener('mouseup', stopResize);
+        }
+    </script>
+
+</body>
+</html>

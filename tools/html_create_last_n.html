@@ -1,0 +1,57 @@
+
+<script>
+  function openTab(tabName, button) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName('tab');
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = 'none';
+    }
+    document.getElementById(tabName).style.display = 'block';
+
+    // Rimuovi lo stile da tutti i bottoni
+    var buttons = document.getElementsByTagName('button');
+    for (i = 0; i < buttons.length; i++) {
+      buttons[i].style.backgroundColor = '';
+    }
+
+    // Imposta lo stile per il bottone cliccato
+    button.style.backgroundColor = 'lightblue';
+  }
+</script>
+
+
+<body>
+
+<h1>Ericsson Activity Report</h1>
+<p>Check: DATA_REPORT ( User: UTENTE_CORRENTE )</p>
+
+<div id='tabs'>
+
+
+<div>
+<h2>REPORT (POST)</h2>
+<button onclick='openTab("tabella1", this)'>EUTRANCELL</button>
+<button onclick='openTab("tabella2", this)'>NRCELL</button>
+<button onclick='openTab("tabella3", this)'>CELLS</button>
+<button onclick='openTab("tabella4", this)'>NRCELLCU</button>
+<button onclick='openTab("tabella5", this)'>CELL SLEEP FUNCTION</button>
+<button onclick='openTab("tabella6", this)'>ALARMS</button>
+<button onclick='openTab("tabella7", this)'>UPGRADE PACKAGE</button>
+<button onclick='openTab("tabella8", this)'>LAST CV</button>
+<button onclick='openTab("tabella9", this)'>KEYFILE INFORMATION</button>
+<button onclick='openTab("tabella10", this)'>EMERGENCY UNLOCK</button>
+</div>
+
+
+
+<div>
+<h2>REPORT DIFF (PRE - POST)</h2>
+<button onclick='openTab("tabellaD1", this)'>D EUTRANCELL</button>
+<button onclick='openTab("tabellaD2", this)'>D NRCELL</button>
+<button onclick='openTab("tabellaD3", this)'>D CELLS</button>
+<button onclick='openTab("tabellaD4", this)'>D ALARMS</button>
+<button onclick='openTab("tabellaD5", this)'>D ALARMS PT</button>
+<button onclick='openTab("tabellaD6", this)'>D ALARMS MO</button>
+<button onclick='openTab("tabellaD7", this)'>D UPGRADE PACKAGE</button>
+</div>
+

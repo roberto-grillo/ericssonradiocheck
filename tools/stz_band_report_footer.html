@@ -1,0 +1,164 @@
+
+        ];
+
+        // Calcola l'altezza del canvas in base al numero di elementi
+        const baseHeight = 1000;
+        const heightPerItem = 12;
+        const canvasHeight = baseHeight + (data.length * heightPerItem);
+        
+        // Imposta l'altezza del canvas
+        document.getElementById('chartCanvas').height = canvasHeight;
+
+        const datasets = [
+            {
+                label: 'DL Frequency',
+                backgroundColor: data.map(d => `hsl( 360, 50%, 60%)`),
+                borderColor: 'gray',
+                borderWidth: 1,
+                data: data.map(d => ({
+                    x: [d.freqDL - d.dlBw/2, d.freqDL + d.dlBw/2],
+                    y: d.cell
+                }))
+            },
+            {
+                label: 'UL Frequency',
+                backgroundColor: data.map(d => `hsl( 90, 50%, 60%)`),
+                borderColor: 'gray',
+                borderWidth: 1,
+                data: data.map(d => ({
+                    x: [d.freqUL - d.ulBw/2, d.freqUL + d.ulBw/2],
+                    y: d.cell
+                }))
+            }
+        ];
+
+        const ctx = document.getElementById('chartCanvas').getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: data.map(d => d.cell),
+                datasets: datasets
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: false,
+                maintainAspectRatio: false,
+                plugins: {
+                    zoom: {
+                        pan: { enabled: true, mode: 'x' },
+                        zoom: {
+                            wheel: { enabled: true },
+                            pinch: { enabled: true },
+                            mode: 'x',
+                            onZoomComplete: function({ chart }) {
+                                fixMinX(chart);
+                                chart.update();
+                            }
+                        }
+                    }
+                },
+                scales: {
+x: {
+    title: { display: true, text: 'Frequency (MHz)' },
+    min: 700,
+    max: 4000,
+    type: 'logarithmic',
+    position: 'bottom', // Posizione predefinita
+    ticks: {
+        rotation: 90,
+        autoSkip: false,
+        // Mostra più tick generando valori personalizzati
+        callback: function(value) {
+            // Con i valori logaritmici, mostra solo alcuni punti significativi
+            const significantValues = [700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000, 2100, 2200, 2300, 2400, 2500, 2600, 2700, 2800, 2900, 3000, 3100, 3200, 3300, 3400, 3500, 3600, 3700, 3800, 3900, 4000];
+            if (significantValues.includes(value)) {
+                return value;
+            }
+            return '';
+        }
+    },
+    // Questa riga dice a Chart.js di generare i tick dai valori forniti
+    // invece di usare solo quelli predefiniti per la scala logaritmica
+    afterBuildTicks: function(axis) {
+            const significantValues = [700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000, 2100, 2200, 2300, 2400, 2500, 2600, 2700, 2800, 2900, 3000, 3100, 3200, 3300, 3400, 3500, 3600, 3700, 3800, 3900, 4000];
+        axis.ticks = significantValues.map(v => ({value: v}));
+    }
+},
+// Aggiungi un secondo asse x identico ma posizionato in alto
+x2: {
+    type: 'logarithmic',
+    position: 'top',
+    min: 700,
+    max: 4000,
+    grid: {
+        drawOnChartArea: false // Non disegnare la griglia per questo asse per evitare sovrapposizioni
+    },
+    ticks: {
+        rotation: 90,
+        autoSkip: false,
+        callback: function(value) {
+            const significantValues = [700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000, 2100, 2200, 2300, 2400, 2500, 2600, 2700, 2800, 2900, 3000, 3100, 3200, 3300, 3400, 3500, 3600, 3700, 3800, 3900, 4000];
+            if (significantValues.includes(value)) {
+                return value;
+            }
+            return '';
+        }
+    },
+    afterBuildTicks: function(axis) {
+            const significantValues = [700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000, 2100, 2200, 2300, 2400, 2500, 2600, 2700, 2800, 2900, 3000, 3100, 3200, 3300, 3400, 3500, 3600, 3700, 3800, 3900, 4000];
+        axis.ticks = significantValues.map(v => ({value: v}));
+    }
+},
+                    y: {
+                        title: { display: true, text: 'Cells' },
+                        type: 'category',
+                        offset: true,
+                        ticks: {
+                            autoSkip: false,
+                            maxRotation: 0
+                        },
+                        afterFit: function(scaleInstance) {
+                            scaleInstance.height = data.length * heightPerItem;
+                        }
+                    }
+                }
+            }
+        });
+
+        function fixMinX(chart) {
+            if (chart.scales.x.min < 0) {
+                chart.options.scales.x.min = 0;
+            }
+        }
+
+        const chartWrapper = document.querySelector('.chart-wrapper');
+        let isDragging = false;
+        let startX, scrollLeft;
+
+        chartWrapper.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startX = e.pageX - chartWrapper.offsetLeft;
+            scrollLeft = chartWrapper.scrollLeft;
+            chartWrapper.style.cursor = 'grabbing';
+        });
+
+        chartWrapper.addEventListener('mouseleave', () => {
+            isDragging = false;
+            chartWrapper.style.cursor = 'grab';
+        });
+
+        chartWrapper.addEventListener('mouseup', () => {
+            isDragging = false;
+            chartWrapper.style.cursor = 'grab';
+        });
+
+        chartWrapper.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+            const x = e.pageX - chartWrapper.offsetLeft;
+            const walk = (x - startX) * 2;
+            chartWrapper.scrollLeft = scrollLeft - walk;
+        });
+    </script>
+</body>
+</html>

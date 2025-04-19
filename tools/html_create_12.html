@@ -1,0 +1,25 @@
+
+<script>
+
+am5.ready(function() {
+
+var grafico3 = am5.Root.new("chartdiv3");
+
+grafico3.setThemes([
+  am5themes_Animated.new(grafico3)
+]);
+
+var chart3 = grafico3.container.children.push(am5percent.PieChart.new(grafico3, {
+  radius: am5.percent(90),
+  innerRadius: am5.percent(50),
+  layout: grafico3.horizontalLayout
+}));
+
+var series3 = chart3.series.push(am5percent.PieSeries.new(grafico3, {
+  name: "Series3",
+  valueField: "Amount",
+  categoryField: "ManagedObject"
+}));
+
+
+series3.data.setAll([
